@@ -324,6 +324,10 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
 .sheet-btn.ghost { background: transparent; color: var(--fg-3); height: 44px; }
 .sheet-btn.naver { background: #03C75A; color: #FFF; }
 .sheet-btn.email { background: var(--surface-2); color: var(--fg-1); }
+.sheet-btn.other { background: #FFF; color: var(--fg-1); border: 1px solid var(--border); }
+.sheet-btn.other:active { background: var(--surface-1); }
+.sheet-btn.apple { background: #000; color: #FFF; }
+.sheet-btn.apple svg { width: 18px; height: 18px; fill: #FFF; }
 .sheet-tos { font-size: 11px; color: var(--fg-4); text-align: center; margin-top: 12px; line-height: 1.5; letter-spacing: -0.2px; }
 .sheet-tos a { color: var(--fg-3); text-decoration: underline; text-underline-offset: 2px; }
 
@@ -398,7 +402,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
       <div class="scen-group-label">A. 신규 사용자 첫 발급</div>
       <div class="scen-list">
         <button class="scen-btn active" onclick="setScenario('A1', this)"><div class="scen-num">A1</div><div class="scen-body"><div class="scen-name">광고 직진입 · 비로그인</div><div class="scen-desc">CTA 탭 → 즉시 카카오 시트</div></div></button>
-        <button class="scen-btn" onclick="setScenario('A2', this)"><div class="scen-num">A2</div><div class="scen-body"><div class="scen-name">카카오 SDK 미지원</div><div class="scen-desc">네이버/이메일 fallback 노출</div></div></button>
         <button class="scen-btn" onclick="setScenario('A3', this)"><div class="scen-num">A3</div><div class="scen-body"><div class="scen-name">발급 진행 중 (로딩)</div><div class="scen-desc">CTA 스피너, 중복 탭 방어</div></div></button>
         <button class="scen-btn" onclick="setScenario('A4', this)"><div class="scen-num">A4</div><div class="scen-body"><div class="scen-name">발급 성공 직후</div><div class="scen-desc">성공 토스트 + 완료 배너 + 예약 CTA</div></div></button>
       </div>
@@ -428,7 +431,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
       <div class="scen-list">
         <button class="scen-btn" onclick="setScenario('D1', this)"><div class="scen-num">D1</div><div class="scen-body"><div class="scen-name">네트워크 오류</div><div class="scen-desc">발급 API 실패 → 재시도</div></div></button>
         <button class="scen-btn" onclick="setScenario('D2', this)"><div class="scen-num">D2</div><div class="scen-body"><div class="scen-name">탈퇴 후 재가입 차단</div><div class="scen-desc">CI 기반 차단 안내</div></div></button>
-        <button class="scen-btn" onclick="setScenario('D3', this)"><div class="scen-num">D3</div><div class="scen-body"><div class="scen-name">광고 안전 카피</div><div class="scen-desc">"무료" 표현 약화 (광고 disapproval 대응)</div></div></button>
       </div>
     </div>
   </div>
@@ -743,6 +745,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
         <div class="sheet-desc" id="sheetDesc">회원가입을 한 번에 진행하고 바로 13장을 받을 수 있어요. 다음 달에도 자동으로 새 쿠폰이 열립니다.</div>
         <div class="sheet-btns" id="sheetBtns">
           <button class="sheet-btn kakao" onclick="loginAndIssue('kakao')"><svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.48 2 10.8c0 2.81 1.87 5.26 4.66 6.64-.2.69-.74 2.55-.85 2.95-.14.49.18.48.38.35.16-.11 2.51-1.7 3.52-2.39.74.11 1.51.17 2.29.17 5.52 0 10-3.48 10-7.72S17.52 3 12 3z"></path></svg>카카오로 시작하기</button>
+          <button class="sheet-btn other" onclick="showOtherLogins()">다른 방법으로 로그인</button>
           <button class="sheet-btn ghost" onclick="closeSheet()">다음에 받기</button>
         </div>
         <div class="sheet-tos">가입 시 <a href="#">이용약관</a>과 <a href="#">개인정보처리방침</a>에 동의하게 됩니다.</div>
@@ -840,7 +843,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
         <div class="policy-a">
           <div class="policy-row"><div class="policy-key">Eyebrow</div><div class="policy-val">"5월 쿠폰팩 · 회원이면 누구나 1회" · 캠페인 시즌별 변경 (백엔드 fetch) · <b>본 캠페인 미수령 회원이 대상</b></div></div>
           <div class="policy-row"><div class="policy-key">타이틀</div><div class="policy-val">"선박 예약 쿠폰 13장을 한 번에 받아가세요." · dot signature 포함</div></div>
-          <div class="policy-row"><div class="policy-key">D3 안전 카피</div><div class="policy-val">광고 disapproval 발생 시 자동 전환: <b>"회원이면 누구나"</b> → <b>"어바웃피싱 회원 혜택"</b></div></div>
           <div class="policy-row"><div class="policy-key">변경 권한</div><div class="policy-val">캠페인 시즌별 쿠폰 구성 변경 시 카피 동기 갱신 · 약관 정합성 검증 필수</div></div>
         </div>
       </div>
@@ -852,8 +854,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
         </button>
         <div class="policy-a">
           <div class="policy-row"><div class="policy-key">쿠폰 가치</div><div class="policy-val">"최대 6만원+" · <b>캠페인 시즌별 쿠폰 합계 변경 시 동적 fetch</b></div></div>
-          <div class="policy-row"><div class="policy-key">받는 비용</div><div class="policy-val">"완전 무료" · D3 모드 시 "회원 가입 시"로 자동 변경</div></div>
-          <div class="policy-row"><div class="policy-key">발급 시간</div><div class="policy-val">"3초" · 카카오 SDK 미지원 환경에선 "10초"로 동적 변경 (A2 시나리오)</div></div>
+          <div class="policy-row"><div class="policy-key">받는 비용</div><div class="policy-val">"완전 무료" · 회원 가입 시 1회 발급 조건 명시</div></div>
+          <div class="policy-row"><div class="policy-key">발급 시간</div><div class="policy-val">"3초" · 카카오 외 로그인(네이버/Apple/이메일) 선택 시 다소 길어질 수 있음</div></div>
           <div class="policy-row"><div class="policy-key">광고심의</div><div class="policy-val">"최대" 표현 필수, "+" 모호화 표현 OK, "무료" 표기 시 회원 가입 조건 명시</div></div>
         </div>
       </div>
@@ -1095,10 +1097,12 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
         <div class="policy-a">
           <div class="policy-row"><div class="policy-key">트리거</div><div class="policy-val"><b>명시적 CTA 탭만</b> · 페이지 진입 시 자동 노출 금지</div></div>
           <div class="policy-row"><div class="policy-key">기본 동작</div><div class="policy-val">카카오 SDK 호출 → 로그인 → 발급 트랜잭션</div></div>
-          <div class="policy-row"><div class="policy-key">A2: SDK 미지원</div><div class="policy-val">인앱브라우저 등 환경에서 <b>네이버 / 이메일 가입</b> fallback 자동 노출</div></div>
+          <div class="policy-row"><div class="policy-key">다른 방법 로그인</div><div class="policy-val">시트에 <b>"다른 방법으로 로그인"</b> 버튼 상시 노출 · 클릭 시 같은 시트 내에서 네이버 / Apple / 이메일 옵션으로 전환</div></div>
+          <div class="policy-row"><div class="policy-key">인앱브라우저</div><div class="policy-val">카카오 SDK 차단 환경 (인스타그램·페이스북 인앱) → 사용자가 "다른 방법으로 로그인" 명시 선택해 우회 가능</div></div>
+          <div class="policy-row"><div class="policy-key">제공 로그인</div><div class="policy-val">카카오(메인) · 네이버 · Apple · 이메일 · 4종</div></div>
           <div class="policy-row"><div class="policy-key">닫기</div><div class="policy-val">backdrop 탭 또는 "다음에 받기"</div></div>
           <div class="policy-row"><div class="policy-key">시각 시그널</div><div class="policy-val">backdrop opacity 0.62 + blur(2px) · transition 0.32s cubic-bezier</div></div>
-          <div class="policy-row"><div class="policy-key">트래킹</div><div class="policy-val"><span class="event-tag">login_start</span> <span class="event-tag">login_complete</span> (provider 포함)</div></div>
+          <div class="policy-row"><div class="policy-key">트래킹</div><div class="policy-val"><span class="event-tag">login_start</span> <span class="event-tag">login_other_methods_click</span> <span class="event-tag">login_complete</span> (provider 포함: kakao / naver / apple / email)</div></div>
         </div>
       </div>
 
@@ -1165,27 +1169,33 @@ function showToast(msg, type = 'info', duration = 2500) {
   setTimeout(() => toast.classList.remove('show'), duration);
 }
 
-function openSheet(opts = {}) {
+function openSheet() {
   trackEvent('login_start');
-  const btns = document.getElementById('sheetBtns');
-  if (opts.kakaoUnavailable) {
-    document.getElementById('sheetTitle').innerHTML = '간편 로그인으로<br><span class="accent">3초만에</span> 받기';
-    document.getElementById('sheetDesc').textContent = '현재 환경에서 카카오 로그인이 어려워요. 다른 방법으로 시작해보세요.';
-    btns.innerHTML = `
-      <button class="sheet-btn naver" onclick="loginAndIssue('naver')">네이버로 시작하기</button>
-      <button class="sheet-btn email" onclick="loginAndIssue('email')">이메일로 가입하기</button>
-      <button class="sheet-btn ghost" onclick="closeSheet()">다음에 받기</button>
-    `;
-  } else {
-    document.getElementById('sheetTitle').innerHTML = '카카오로 <span class="accent">3초만에</span><br>쿠폰팩 받기';
-    document.getElementById('sheetDesc').textContent = '회원가입을 한 번에 진행하고 바로 13장을 받을 수 있어요. 다음 달에도 자동으로 새 쿠폰이 열립니다.';
-    btns.innerHTML = `
-      <button class="sheet-btn kakao" onclick="loginAndIssue('kakao')"><svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.48 2 10.8c0 2.81 1.87 5.26 4.66 6.64-.2.69-.74 2.55-.85 2.95-.14.49.18.48.38.35.16-.11 2.51-1.7 3.52-2.39.74.11 1.51.17 2.29.17 5.52 0 10-3.48 10-7.72S17.52 3 12 3z"/></svg>카카오로 시작하기</button>
-      <button class="sheet-btn ghost" onclick="closeSheet()">다음에 받기</button>
-    `;
-  }
+  resetSheetToMain();
   document.getElementById('sheetBackdrop').classList.add('show');
   document.getElementById('sheet').classList.add('show');
+}
+
+function resetSheetToMain() {
+  document.getElementById('sheetTitle').innerHTML = '카카오로 <span class="accent">3초만에</span><br>쿠폰팩 받기';
+  document.getElementById('sheetDesc').textContent = '회원가입을 한 번에 진행하고 바로 13장을 받을 수 있어요.';
+  document.getElementById('sheetBtns').innerHTML = `
+    <button class="sheet-btn kakao" onclick="loginAndIssue('kakao')"><svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.48 2 10.8c0 2.81 1.87 5.26 4.66 6.64-.2.69-.74 2.55-.85 2.95-.14.49.18.48.38.35.16-.11 2.51-1.7 3.52-2.39.74.11 1.51.17 2.29.17 5.52 0 10-3.48 10-7.72S17.52 3 12 3z"/></svg>카카오로 시작하기</button>
+    <button class="sheet-btn other" onclick="showOtherLogins()">다른 방법으로 로그인</button>
+    <button class="sheet-btn ghost" onclick="closeSheet()">다음에 받기</button>
+  `;
+}
+
+function showOtherLogins() {
+  trackEvent('login_other_methods_click');
+  document.getElementById('sheetTitle').innerHTML = '다른 방법으로<br><span class="accent">시작하기</span>';
+  document.getElementById('sheetDesc').textContent = '카카오 외 다른 계정으로도 시작하실 수 있어요.';
+  document.getElementById('sheetBtns').innerHTML = `
+    <button class="sheet-btn naver" onclick="loginAndIssue('naver')">네이버로 시작하기</button>
+    <button class="sheet-btn apple" onclick="loginAndIssue('apple')"><svg viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08zM12 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"></path></svg>Apple로 시작하기</button>
+    <button class="sheet-btn email" onclick="loginAndIssue('email')">이메일로 가입하기</button>
+    <button class="sheet-btn ghost" onclick="resetSheetToMain()">카카오로 돌아가기</button>
+  `;
 }
 function closeSheet() { document.getElementById('sheetBackdrop').classList.remove('show'); document.getElementById('sheet').classList.remove('show'); }
 
@@ -1246,7 +1256,7 @@ function handleCTA(source = 'main') {
   if (state.eventStatus === 'upcoming') { showToast('다음 캠페인 알림을 받기로 했어요', 'success'); return; }
   if (state.flags.expiring) { showToast('받은 쿠폰으로 예약하러 갑니다', 'info'); return; }
   if (state.flags.afterUse) { showToast('남은 쿠폰으로 예약 둘러보기', 'info'); return; }
-  if (!state.isLoggedIn) { openSheet({ kakaoUnavailable: state.flags.kakaoUnavailable }); return; }
+  if (!state.isLoggedIn) { openSheet(); return; }
   if (state.isIssued) { trackEvent('click_explore'); showToast('받은 쿠폰으로 예약하러 갑니다', 'info'); return; }
   if (state.scenario === 'D1') { issueAndFail(); return; }
   issueCoupons();
@@ -1324,19 +1334,13 @@ function updateCTA() {
   valueRow.innerHTML = '<div class="cta-value-left"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" fill="#FEE500"/></svg><span><strong>카카오로 3초</strong> 가입하고 받기</span></div><span class="cta-value-right">최대 6만원+</span>';
 }
 
-function updateHeroCopy(opts = {}) {
-  if (opts.safeCopy) {
-    document.getElementById('heroHook').textContent = '5월 쿠폰팩 · 어바웃피싱 회원 혜택';
-    document.getElementById('heroHeadline').innerHTML = '선박 예약 쿠폰<br><span class="num">13장</span>을<br>한 번에 받아가세요<span class="dot">.</span>';
-  } else {
-    document.getElementById('heroHook').textContent = '5월 쿠폰팩 · 회원이면 누구나 1회';
-    document.getElementById('heroHeadline').innerHTML = '선박 예약 쿠폰<br><span class="num">13장</span>을<br>한 번에 받아가세요<span class="dot">.</span>';
-  }
+function updateHeroCopy() {
+  document.getElementById('heroHook').textContent = '5월 쿠폰팩 · 회원이면 누구나 1회';
+  document.getElementById('heroHeadline').innerHTML = '선박 예약 쿠폰<br><span class="num">13장</span>을<br>한 번에 받아가세요<span class="dot">.</span>';
 }
 
 const scenarioConfig = {
   A1: { state: { isLoggedIn: false, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: {} } },
-  A2: { state: { isLoggedIn: false, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: { kakaoUnavailable: true } } },
   A3: { state: { isLoggedIn: true, isIssued: false, isLoading: true, eventStatus: 'ongoing', flags: {} } },
   A4: { state: { isLoggedIn: true, isIssued: true, isLoading: false, eventStatus: 'ongoing', flags: {} }, after: () => { showToast('쿠폰 13장 발급 완료! 예약에 바로 쓰실 수 있어요', 'success', 3000); document.getElementById('completedBanner').classList.add('show'); } },
   B1: { state: { isLoggedIn: true, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: {} } },
@@ -1347,8 +1351,7 @@ const scenarioConfig = {
   C2: { state: { isLoggedIn: false, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: {} }, after: () => document.getElementById('urgencyBar').classList.add('show') },
   C3: { state: { isLoggedIn: true, isIssued: false, isLoading: false, eventStatus: 'ended', flags: {} } },
   D1: { state: { isLoggedIn: true, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: {} } },
-  D2: { state: { isLoggedIn: false, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: { rejoinBlocked: true } } },
-  D3: { state: { isLoggedIn: false, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: { safeCopy: true } }, after: () => updateHeroCopy({ safeCopy: true }) }
+  D2: { state: { isLoggedIn: false, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: { rejoinBlocked: true } } }
 };
 
 function setScenario(key, btnEl) {
@@ -1364,7 +1367,7 @@ function setScenario(key, btnEl) {
   document.querySelectorAll('.scen-btn').forEach(b => b.classList.remove('active'));
   if (btnEl) btnEl.classList.add('active');
   resetUI();
-  updateHeroCopy({ safeCopy: !!state.flags.safeCopy });
+  updateHeroCopy();
   updateCTA();
   if (cfg.after) setTimeout(cfg.after, 100);
 }
