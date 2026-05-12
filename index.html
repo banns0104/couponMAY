@@ -483,7 +483,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
 }
 </style>
 </head>
-<body>
+<body class="annotations-on">
 
 <!-- ============ MOBILE ============ -->
 <!-- ============ SCENARIO PANEL (좌측) ============ -->
@@ -864,9 +864,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
 <div class="policy-panel">
   <div class="anno-toggle-bar">
     <span>화면 매핑</span>
-    <button class="anno-toggle-btn" id="annoToggle" onclick="toggleAnnotations()">
+    <button class="anno-toggle-btn active" id="annoToggle" onclick="toggleAnnotations()">
       <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-      <span id="annoToggleLabel">번호 라벨 켜기</span>
+      <span id="annoToggleLabel">번호 라벨 끄기</span>
     </button>
   </div>
   <div class="control-card">
@@ -1462,6 +1462,9 @@ function setScenario(key, btnEl) {
   updateHeroCopy();
   updateCTA();
   if (cfg.after) setTimeout(cfg.after, 100);
+  if (document.body.classList.contains('annotations-on') && typeof renderAnnotations === 'function') {
+    setTimeout(renderAnnotations, 150);
+  }
 }
 
 function resetUI() {
@@ -1486,6 +1489,8 @@ function initPage() {
   updateCTA();
   const firstBtn = document.querySelector('.scen-btn.active');
   if (firstBtn) setScenario('A1', firstBtn);
+  // 기본 어노테이션 표시
+  if (typeof renderAnnotations === 'function') renderAnnotations();
 }
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initPage);
@@ -1499,11 +1504,11 @@ function handleGroupCoupon() { trackEvent('group_coupon_request_click'); showToa
 // ============ 정책-화면 매핑 시스템 ============
 const policyMap = {
   A1: { sel: '#appBanner', label: '앱 설치 배너' },
-  A2: { sel: '#expireBanner', label: '만료 임박 배너' },
+  A2: { sel: '#expireBanner', label: '만료 임박 배너', scenario: 'B3' },
   B1: { sel: '#heroHook', label: 'Eyebrow·타이틀' },
   B2: { sel: '.value-card', label: '가치 카드' },
   B3: { sel: '.social-proof', label: '사회적 증명' },
-  C1: { sel: '#completedBanner', label: '발급 완료 배너' },
+  C1: { sel: '#completedBanner', label: '발급 완료 배너', scenario: 'B2' },
   D1: { sel: '.boats-section', label: '선박 가로 스크롤' },
   D2: { sel: '.info-strip', label: '정보 strip' },
   D3: { sel: '#couponSection', label: '쿠폰 구성' },
@@ -1515,10 +1520,10 @@ const policyMap = {
   E1: { sel: '.channel-btn', label: '채널톡' },
   E2: { sel: '#ctaValueRow', label: 'CTA 가치 행' },
   E3: { sel: '#ctaBtn', label: 'CTA 메인 버튼' },
-  E5: { sel: '.cta-sublinks', label: '보조 링크' },
-  F1: { sel: '#toast', label: '토스트' },
-  F2: { sel: '#sheet', label: '카카오 시트' },
-  F3: { sel: '#fullOverlay', label: '풀 오버레이' }
+  E5: { sel: '.cta-sublinks', label: '보조 링크', scenario: 'B2' },
+  F1: { sel: '#toast', label: '토스트', scenario: 'A3' },
+  F2: { sel: '#sheet', label: '카카오 시트', scenario: 'A1', trigger: 'openSheet' },
+  F3: { sel: '#fullOverlay', label: '풀 오버레이', scenario: 'D2', trigger: 'showRejoinOverlay' }
 };
 
 function getPolicyTargetEl(id) {
@@ -1527,22 +1532,44 @@ function getPolicyTargetEl(id) {
   return document.querySelector(m.sel);
 }
 
-// 정책 클릭 → 모바일 요소 강조 + 스크롤
+// 정책 클릭 → (필요 시) 시나리오 전환 + 트리거 + 모바일 강조 + 스크롤
 function highlightPolicyTarget(id) {
-  const el = getPolicyTargetEl(id);
-  if (!el) return;
-  // 기존 highlight 모두 제거
-  document.querySelectorAll('.policy-highlight').forEach(n => n.classList.remove('policy-highlight'));
-  el.classList.add('policy-highlight');
-  // 모바일 안의 요소면 #screen 안에서 스크롤
-  const screen = document.getElementById('screen');
-  if (screen && screen.contains(el)) {
-    const elRect = el.getBoundingClientRect();
-    const screenRect = screen.getBoundingClientRect();
-    const offset = elRect.top - screenRect.top - 80;
-    screen.scrollTo({ top: screen.scrollTop + offset, behavior: 'smooth' });
+  const m = policyMap[id];
+  if (!m) return;
+  const needScenario = m.scenario && state.scenario !== m.scenario;
+  const needTrigger = !!m.trigger;
+  if (needScenario) {
+    const scenBtn = document.querySelector(`.scen-btn[onclick*="'${m.scenario}'"]`);
+    if (scenBtn) setScenario(m.scenario, scenBtn);
   }
-  setTimeout(() => el.classList.remove('policy-highlight'), 2000);
+  if (needTrigger) {
+    setTimeout(() => {
+      if (m.trigger === 'openSheet') {
+        openSheet();
+      } else if (m.trigger === 'showRejoinOverlay') {
+        showOverlay({
+          title: '이미 받으셨던 회원이에요',
+          desc: '동일한 명의로 가입했던 이력이 확인됩니다.<br>본 혜택은 1인 1회만 발급되어 다시 받으실 수 없어요.',
+          btns: [{ label: '확인', fn: closeOverlay }]
+        });
+      }
+    }, needScenario ? 200 : 50);
+  }
+  const delay = needScenario || needTrigger ? 450 : 0;
+  setTimeout(() => {
+    const el = document.querySelector(m.sel);
+    if (!el) return;
+    document.querySelectorAll('.policy-highlight').forEach(n => n.classList.remove('policy-highlight'));
+    el.classList.add('policy-highlight');
+    const screen = document.getElementById('screen');
+    if (screen && screen.contains(el)) {
+      const elRect = el.getBoundingClientRect();
+      const screenRect = screen.getBoundingClientRect();
+      const offset = elRect.top - screenRect.top - 80;
+      screen.scrollTo({ top: screen.scrollTop + offset, behavior: 'smooth' });
+    }
+    setTimeout(() => el.classList.remove('policy-highlight'), 2200);
+  }, delay);
 }
 
 // togglePolicy 확장 - 펼침 시 자동 강조
