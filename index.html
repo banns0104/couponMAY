@@ -3,9 +3,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>예약 쿠폰팩 13장 무료 받기 | 어바웃피싱</title>
-<meta name="description" content="어바웃피싱 회원에게 매월 드리는 예약 쿠폰 13장. 선박 예약에 바로 사용. 카카오로 3초만에 받으세요.">
-<meta property="og:title" content="매월 받는 예약 쿠폰 13장 | 어바웃피싱">
-<meta property="og:description" content="선박 예약에 바로 쓰는 13장의 무료 쿠폰. 매월 새로 드려요.">
+<meta name="description" content="어바웃피싱 회원에게 1회 드리는 예약 쿠폰 13장. 선박 예약에 바로 사용. 카카오로 3초만에 받으세요.">
+<meta property="og:title" content="회원이면 누구나 1회 받는 예약 쿠폰 13장 | 어바웃피싱">
+<meta property="og:description" content="선박 예약에 바로 쓰는 13장의 무료 쿠폰. 회원 가입 시 한 번 드려요.">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
 <style>/**
  * Minified by jsDelivr using clean-css v5.3.3.
@@ -64,6 +64,8 @@
 .benefit-cta { width: 100%; height: 44px; border: 1px solid var(--af-blue); background: #FFF; color: var(--af-blue); border-radius: 1000px; font-family: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; letter-spacing: -0.2px; }
 .benefit-cta:active { background: #EFF3FF; }
 .benefit-cta svg { width: 14px; height: 14px; stroke: var(--af-blue); stroke-width: 2; fill: none; }
+
+.notice-list li.emphasis strong { color: var(--af-blue); font-weight: 800; }
 </style>
 
 
@@ -406,7 +408,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
       <div class="scen-group-label">B. 기존 회원 재방문</div>
       <div class="scen-list">
         <button class="scen-btn" onclick="setScenario('B1', this)"><div class="scen-num">B1</div><div class="scen-body"><div class="scen-name">로그인 · 이번 달 미발급</div><div class="scen-desc">CTA 탭 → 즉시 발급</div></div></button>
-        <button class="scen-btn" onclick="setScenario('B2', this)"><div class="scen-num">B2</div><div class="scen-body"><div class="scen-name">이번 달 발급 완료</div><div class="scen-desc">완료 배너 + 예약 CTA</div></div></button>
+        <button class="scen-btn" onclick="setScenario('B2', this)"><div class="scen-num">B2</div><div class="scen-body"><div class="scen-name">쿠폰팩 발급 완료</div><div class="scen-desc">완료 배너 + 예약 CTA</div></div></button>
         <button class="scen-btn" onclick="setScenario('B3', this)"><div class="scen-num">B3</div><div class="scen-body"><div class="scen-name">만료 D-3 미사용</div><div class="scen-desc">상단 만료 알림 + 예약 강조</div></div></button>
         <button class="scen-btn" onclick="setScenario('B4', this)"><div class="scen-num">B4</div><div class="scen-body"><div class="scen-name">사용 후 재방문</div><div class="scen-desc">남은 쿠폰 안내 + 추가 사용 유도</div></div></button>
       </div>
@@ -415,9 +417,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
     <div class="scen-group">
       <div class="scen-group-label">C. 시급성 · 이벤트 상태</div>
       <div class="scen-list">
-        <button class="scen-btn" onclick="setScenario('C1', this)"><div class="scen-num">C1</div><div class="scen-body"><div class="scen-name">다음 달 오픈 전</div><div class="scen-desc">상단 알림 + 오픈 알림 신청 CTA</div></div></button>
-        <button class="scen-btn" onclick="setScenario('C2', this)"><div class="scen-num">C2</div><div class="scen-body"><div class="scen-name">월말 D-3 시급성</div><div class="scen-desc">상단 빨간 마감 임박 바</div></div></button>
-        <button class="scen-btn" onclick="setScenario('C3', this)"><div class="scen-num">C3</div><div class="scen-body"><div class="scen-name">이번 달 마감</div><div class="scen-desc">CTA 비활성 + 오버레이</div></div></button>
+        <button class="scen-btn" onclick="setScenario('C1', this)"><div class="scen-num">C1</div><div class="scen-body"><div class="scen-name">캠페인 마감 후</div><div class="scen-desc">상단 알림 + 다음 캠페인 알림 신청</div></div></button>
+        <button class="scen-btn" onclick="setScenario('C2', this)"><div class="scen-num">C2</div><div class="scen-body"><div class="scen-name">캠페인 마감 D-3 시급성</div><div class="scen-desc">상단 빨간 마감 임박 바</div></div></button>
+        <button class="scen-btn" onclick="setScenario('C3', this)"><div class="scen-num">C3</div><div class="scen-body"><div class="scen-name">캠페인 종료 (수량 소진)</div><div class="scen-desc">CTA 비활성 + 오버레이</div></div></button>
       </div>
     </div>
 
@@ -460,7 +462,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
       <!-- Urgency strip (C2 시나리오) -->
       <div class="urgency-bar" id="urgencyBar">
         <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-        <span id="urgencyText">5월 쿠폰팩 마감 D-3 · 놓치면 다음 달이에요</span>
+        <span id="urgencyText">5월 쿠폰팩 마감 D-3 · 놓치면 다시 받을 수 없어요</span>
       </div>
 
       <!-- C1: upcoming alert -->
@@ -468,8 +470,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
         <div class="status-alert-inner">
           <div class="status-alert-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
           <div>
-            <div class="status-alert-title">6월 1일 오픈 예정이에요</div>
-            <div class="status-alert-desc">알림 신청해두시면 가장 먼저 알려드릴게요.</div>
+            <div class="status-alert-title">5월 캠페인이 마감되었어요</div>
+            <div class="status-alert-desc">다음 캠페인 시작 시 알림을 보내드릴게요.</div>
           </div>
         </div>
       </div>
@@ -485,7 +487,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
 
       <!-- HERO -->
       <div class="hero">
-        <div class="hero-eyebrow" id="heroHook">2026년 5월 · 회원이면 누구나</div>
+        <div class="hero-eyebrow" id="heroHook">5월 쿠폰팩 · 회원이면 누구나 1회</div>
         <div class="hero-title" id="heroHeadline">선박 예약 쿠폰<br><span class="num">13장</span>을<br>한 번에 받아가세요<span class="dot">.</span></div>
 
         <div class="value-card">
@@ -541,7 +543,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
       <!-- 매월 정책 -->
       <div class="monthly-strip">
         <div class="monthly-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-6.219-8.56"></path><polyline points="21 4 21 10 15 10"></polyline></svg></div>
-        <div class="monthly-text"><strong>매월 1일</strong> 새 쿠폰팩이 열려요. 이번 달 발급은 <strong>1회</strong> 가능합니다.</div>
+        <div class="monthly-text"><strong>어바웃피싱 회원이면 누구나 1회</strong> · 한 번에 13장 받아 <strong>30일간 자유롭게</strong> 사용하세요.</div>
       </div>
       <div class="info-strip">
         <div class="info-row"><span class="info-label">발급 기간</span><span class="info-value">2026.05.01 ~ 05.31</span></div>
@@ -639,12 +641,13 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
               </div>
               <div class="benefit-titles">
                 <div class="benefit-title">단체로 가면 10% 할인</div>
-                <div class="benefit-sub">4인 이상 함께 예약하실 때</div>
+                <div class="benefit-sub">회원이면 누구나 받고, 4인 이상 예약 시 사용해요</div>
               </div>
             </div>
             <div class="benefit-info">
-              <div class="benefit-info-row"><span class="k">할인</span><span class="v"><strong>10%</strong> · 금액 상한 없음</span></div>
-              <div class="benefit-info-row"><span class="k">조건</span><span class="v">4인 이상 예약 시 신청</span></div>
+              <div class="benefit-info-row"><span class="k">할인율</span><span class="v"><strong>10%</strong></span></div>
+              <div class="benefit-info-row"><span class="k">한도</span><span class="v"><strong>금액 상한 제한 없음</strong></span></div>
+              <div class="benefit-info-row"><span class="k">사용</span><span class="v">4인 이상 예약 시</span></div>
               <div class="benefit-info-row"><span class="k">유효</span><span class="v">발급일로부터 31일</span></div>
             </div>
           </div>
@@ -667,8 +670,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
             <div class="faq-a">선박 예약 결제 시에만 사용 가능해요. 결제 화면에서 자동으로 추천돼서 따로 입력할 필요 없어요.</div>
           </div>
           <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">매달 받을 수 있나요?</span><svg class="faq-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
-            <div class="faq-a">네, 매월 1일에 새 쿠폰팩이 열려요. 매월 1회 발급 가능하며, 발급일로부터 30일간 사용할 수 있어요.</div>
+            <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">한 번 받으면 다시 받을 수 없나요?</span><svg class="faq-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+            <div class="faq-a">이 쿠폰팩 13장은 어바웃피싱 회원이라면 누구나 1회 받을 수 있어요(기존 회원도 처음 받는 경우 1회 지급). 다만 예약을 이용하실수록 재구매 쿠폰이 자동 발급(이용 횟수에 따라 5~15% 할인)되니, 받으신 이후에도 계속 혜택을 누리실 수 있어요.</div>
           </div>
           <div class="faq-item">
             <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">왜 회원가입이 필요한가요?</span><svg class="faq-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
@@ -688,13 +691,13 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
         <div class="notice-card">
           <div class="notice-title">유의사항</div>
           <ul class="notice-list">
+            <li class="emphasis"><strong>본 캠페인은 계정당 1회만 발급</strong> · 재발행 및 중복 발급 불가, 탈퇴 후 재가입 시에도 재지급되지 않습니다</li>
+            <li class="emphasis"><strong>정액·정률 쿠폰</strong>은 고객 사유 예약 취소 시 사용한 쿠폰이 소멸되며 복구되지 않습니다</li>
             <li class="emphasis">선박 예약 결제에만 사용 가능 (쇼핑·중고장터·머니 충전 등 사용 불가)</li>
             <li>발급일 기준 30일 이내 사용 가능, 기간 만료 시 자동 소멸</li>
-            <li>월 1회 발급 가능, 매월 1일 새 쿠폰팩이 오픈됩니다</li>
-            <li>고객 사유로 예약 취소 시 사용한 쿠폰은 소멸되며 복구되지 않습니다</li>
-            <li>다른 쿠폰과 중복 사용은 불가합니다</li>
+            <li>재구매 쿠폰은 예약 이용 시마다, 단체예약 쿠폰은 4인 이상 예약 시 사용 가능합니다</li>
+            <li>1회 결제에 1장만 사용 가능하며, 다른 쿠폰과 중복 사용은 불가합니다</li>
             <li>일부 선박/업체에서는 쿠폰 사용이 제한될 수 있습니다</li>
-            <li>탈퇴 후 재가입 시 본 혜택은 재지급되지 않습니다</li>
             <li>본 혜택은 어바웃피싱 사정에 따라 사전 고지 없이 변경/종료될 수 있습니다</li>
           </ul>
         </div>
@@ -717,13 +720,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <span class="cta-value-right">최대 6만원+</span>
         </div>
         <button class="cta-btn primary" id="ctaBtn" onclick="handleCTA('main')">쿠폰 13장 모두 받기</button>
-        <div class="cta-trust">
-          <span><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>결제정보 미수집</span>
-          <span class="sep">·</span>
-          <span><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>1원 결제 없음</span>
-          <span class="sep">·</span>
-          <span>한국인터넷진흥원 인증</span>
-        </div>
         <div class="cta-sublinks">
           <button class="cta-link" id="ctaSubLink" onclick="goToCouponBox()">쿠폰함에서 확인하기<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
         </div>
@@ -741,7 +737,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
         <div class="sheet-handle"></div>
         <div class="sheet-value-strip">
           <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          쿠폰 13장 · 매월 무료 · 가입 1회
+          쿠폰 13장 · 회원 가입 시 1회 무료
         </div>
         <div class="sheet-title" id="sheetTitle">카카오로 <span class="accent">3초만에</span><br>쿠폰팩 받기</div>
         <div class="sheet-desc" id="sheetDesc">회원가입을 한 번에 진행하고 바로 13장을 받을 수 있어요. 다음 달에도 자동으로 새 쿠폰이 열립니다.</div>
@@ -757,7 +753,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
         <div class="overlay-card">
           <div class="overlay-icon"><svg id="overlayIcon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
           <div class="overlay-title" id="overlayTitle">5월 쿠폰팩이 마감되었어요</div>
-          <div class="overlay-desc" id="overlayDesc">6월 1일에 새 쿠폰팩이 열려요.<br>알림 신청하시면 가장 먼저 알려드릴게요.</div>
+          <div class="overlay-desc" id="overlayDesc">다음 캠페인 시작 시 알려드릴게요.<br>알림 신청하시면 가장 먼저 받아보실 수 있어요.</div>
           <div class="overlay-btns" id="overlayBtns">
             <button class="overlay-btn" onclick="closeOverlay()">오픈 알림 신청하기</button>
           </div>
@@ -797,7 +793,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">노출 조건</div><div class="policy-val">매월 <b>28일~말일</b> + 미발급 사용자만</div></div>
+          <div class="policy-row"><div class="policy-key">노출 조건</div><div class="policy-val">캠페인 종료 <b>D-3 ~ D-day</b> + 미발급 사용자만</div></div>
           <div class="policy-row"><div class="policy-key">D-day 계산</div><div class="policy-val"><b>서버 시간(KST)</b> 기준 자정 갱신, 디바이스 시간 무시</div></div>
           <div class="policy-row"><div class="policy-key">상호작용</div><div class="policy-val">시각 신호만, 클릭 불가</div></div>
           <div class="policy-row"><div class="policy-key">트래킹</div><div class="policy-val"><span class="event-tag">urgency_bar_view</span></div></div>
@@ -842,10 +838,10 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">Eyebrow</div><div class="policy-val">"2026년 5월 · 회원이면 누구나" · 매월 자동 갱신 (백엔드 fetch)</div></div>
+          <div class="policy-row"><div class="policy-key">Eyebrow</div><div class="policy-val">"5월 쿠폰팩 · 회원이면 누구나 1회" · 캠페인 시즌별 변경 (백엔드 fetch) · <b>본 캠페인 미수령 회원이 대상</b></div></div>
           <div class="policy-row"><div class="policy-key">타이틀</div><div class="policy-val">"선박 예약 쿠폰 13장을 한 번에 받아가세요." · dot signature 포함</div></div>
-          <div class="policy-row"><div class="policy-key">D3 안전 카피</div><div class="policy-val">광고 disapproval 발생 시 자동 전환: <b>"신규 회원 단독"</b> → <b>"회원 가입 혜택"</b></div></div>
-          <div class="policy-row"><div class="policy-key">변경 권한</div><div class="policy-val">매월 쿠폰 구성 변경 시 카피 동기 갱신 · 약관 정합성 검증 필수</div></div>
+          <div class="policy-row"><div class="policy-key">D3 안전 카피</div><div class="policy-val">광고 disapproval 발생 시 자동 전환: <b>"회원이면 누구나"</b> → <b>"어바웃피싱 회원 혜택"</b></div></div>
+          <div class="policy-row"><div class="policy-key">변경 권한</div><div class="policy-val">캠페인 시즌별 쿠폰 구성 변경 시 카피 동기 갱신 · 약관 정합성 검증 필수</div></div>
         </div>
       </div>
 
@@ -855,7 +851,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">쿠폰 가치</div><div class="policy-val">"최대 6만원+" · <b>매월 쿠폰 합계 변경 시 동적 fetch</b></div></div>
+          <div class="policy-row"><div class="policy-key">쿠폰 가치</div><div class="policy-val">"최대 6만원+" · <b>캠페인 시즌별 쿠폰 합계 변경 시 동적 fetch</b></div></div>
           <div class="policy-row"><div class="policy-key">받는 비용</div><div class="policy-val">"완전 무료" · D3 모드 시 "회원 가입 시"로 자동 변경</div></div>
           <div class="policy-row"><div class="policy-key">발급 시간</div><div class="policy-val">"3초" · 카카오 SDK 미지원 환경에선 "10초"로 동적 변경 (A2 시나리오)</div></div>
           <div class="policy-row"><div class="policy-key">광고심의</div><div class="policy-val">"최대" 표현 필수, "+" 모호화 표현 OK, "무료" 표기 시 회원 가입 조건 명시</div></div>
@@ -914,11 +910,11 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
 
       <div class="policy-item open">
         <button class="policy-q" onclick="togglePolicy(this)">
-          <div class="policy-q-left"><span class="policy-num">D2</span><span class="policy-q-text">매월 정책 strip + 정보 strip</span></div>
+          <div class="policy-q-left"><span class="policy-num">D2</span><span class="policy-q-text">발급 정책 strip + 정보 strip</span></div>
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">발급 기간</div><div class="policy-val">매월 1일 ~ 말일 자동 표시 · 서버 시간 기준</div></div>
+          <div class="policy-row"><div class="policy-key">캠페인 기간</div><div class="policy-val">2026.05.01 ~ 05.31 · 서버 시간 기준 (캠페인 시즌별 변경)</div></div>
           <div class="policy-row"><div class="policy-key">사용 기간</div><div class="policy-val">발급일부터 30일 (정책 fixed)</div></div>
           <div class="policy-row"><div class="policy-key">사용처</div><div class="policy-val">선박 예약 결제만 (정책 fixed)</div></div>
           <div class="policy-row"><div class="policy-key">정책 변경</div><div class="policy-val">변경 시 약관 동시 갱신 필수 · 사전 7일 고지</div></div>
@@ -958,7 +954,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
         </button>
         <div class="policy-a">
           <div class="policy-row"><div class="policy-key">초기 상태</div><div class="policy-val">첫 문항만 펼침 · 나머지 접힘</div></div>
-          <div class="policy-row"><div class="policy-key">구성</div><div class="policy-val">정말 무료? · 어디 사용? · 매달? · 왜 가입? · 한 번에 여러 장?</div></div>
+          <div class="policy-row"><div class="policy-key">구성</div><div class="policy-val">정말 무료? · 어디 사용? · 다시 받을 수 있나? · 왜 가입? · 한 번에 여러 장?</div></div>
           <div class="policy-row"><div class="policy-key">업데이트</div><div class="policy-val">분기마다 채널톡 인입 Top 5 질문 분석 → FAQ 갱신</div></div>
           <div class="policy-row"><div class="policy-key">AEO Schema</div><div class="policy-val">FAQPage Schema.org JSON-LD 자동 생성 (AI 검색 인용)</div></div>
           <div class="policy-row"><div class="policy-key">트래킹</div><div class="policy-val"><span class="event-tag">faq_open</span> (질문 텍스트 + position)</div></div>
@@ -971,9 +967,11 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">필수 항목</div><div class="policy-val">8개 (사용처 · 사용 기간 · 월 1회 · 취소 시 · 중복 불가 · 일부 제외 · 재가입 불가 · 변경/종료 권한)</div></div>
-          <div class="policy-row"><div class="policy-key">법무 정합성</div><div class="policy-val">이용약관과 1:1 매칭 필수 · 변경 시 약관 동시 개정</div></div>
-          <div class="policy-row"><div class="policy-key">강조</div><div class="policy-val">"선박 예약 결제에만 사용 가능" 첫 줄 · 색 강조</div></div>
+          <div class="policy-row"><div class="policy-key">핵심 강조 1</div><div class="policy-val"><b>계정당 1회만 발급</b> · 재발행/중복 발급 불가, 탈퇴 후 재가입 시에도 재지급 불가 (CI 기반 차단)</div></div>
+          <div class="policy-row"><div class="policy-key">핵심 강조 2</div><div class="policy-val"><b>정액·정률 쿠폰은 고객 사유 취소 시 소멸</b> · 복구 불가 (업체 사유 취소는 복구)</div></div>
+          <div class="policy-row"><div class="policy-key">필수 항목</div><div class="policy-val">8개 (계정당 1회 · 취소 소멸 · 사용처 · 사용 기간 · 재구매/단체 안내 · 1결제 1쿠폰 · 일부 제외 · 변경/종료 권한)</div></div>
+          <div class="policy-row"><div class="policy-key">법무 정합성</div><div class="policy-val">이용약관과 1:1 매칭 필수 · 변경 시 약관 동시 개정 <span class="decide">약관 개정 필수</span></div></div>
+          <div class="policy-row"><div class="policy-key">위계</div><div class="policy-val">상단 3개 항목 emphasis 처리(af-blue 강조) · 나머지 일반 항목</div></div>
         </div>
       </div>
 
@@ -1000,14 +998,14 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">발급 조건</div><div class="policy-val"><b>4인 이상 예약</b> 시 신청 페이지에서 다운로드</div></div>
+          <div class="policy-row"><div class="policy-key">발급 대상</div><div class="policy-val"><b>회원 누구나</b> · 별도 신청 없이 자동 발급 (정액·정률 쿠폰과 동일 구조)</div></div>
+          <div class="policy-row"><div class="policy-key">사용 조건</div><div class="policy-val"><b>4인 이상 예약 결제 시에만 사용 가능</b> · 결제 화면에서 인원 검증 후 자동 적용</div></div>
           <div class="policy-row"><div class="policy-key">할인율</div><div class="policy-val"><b>10%</b> · 금액 상한 제한 없음</div></div>
           <div class="policy-row"><div class="policy-key">사용 기간</div><div class="policy-val">발급일로부터 31일</div></div>
-          <div class="policy-row"><div class="policy-key">발급 방식</div><div class="policy-val">개별 신청 페이지 노출 → 사용자가 직접 발급 → 결제 시 적용</div></div>
-          <div class="policy-row"><div class="policy-key">인원 검증</div><div class="policy-val"><span class="warn">백엔드 신규 개발 필요</span> · <b>1차 운영안: CS 수동 발급</b> (4인 이상 예약 모니터링 → 쿠폰코드 부여) <span class="decide">자동 검증 3-5일 개발</span></div></div>
-          <div class="policy-row"><div class="policy-key">중복</div><div class="policy-val">쿠폰팩 정액 쿠폰과 중복 불가 (1결제 1쿠폰 정책 유지)</div></div>
+          <div class="policy-row"><div class="policy-key">인원 검증</div><div class="policy-val"><span class="warn">결제 화면 인원 검증 백엔드 개발 필요</span> · <b>1차 운영안: 일별 4인 이상 예약 모니터링 → CS 수동 적용/환불 처리</b> <span class="decide">자동 검증 3-5일 개발</span></div></div>
+          <div class="policy-row"><div class="policy-key">중복</div><div class="policy-val">쿠폰팩 정액·정률 쿠폰과 중복 불가 (1결제 1쿠폰 정책)</div></div>
           <div class="policy-row"><div class="policy-key">제휴 선박</div><div class="policy-val">일부 선박 제외 가능 (얼라이언스팀 협의)</div></div>
-          <div class="policy-row"><div class="policy-key">트래킹</div><div class="policy-val"><span class="event-tag">group_coupon_request_click</span> <span class="event-tag">group_coupon_issued</span> <span class="event-tag">group_coupon_used</span></div></div>
+          <div class="policy-row"><div class="policy-key">트래킹</div><div class="policy-val"><span class="event-tag">group_coupon_issued</span> <span class="event-tag">group_coupon_used</span> <span class="event-tag">group_coupon_blocked_insufficient_pax</span></div></div>
         </div>
       </div>
     </div>
@@ -1056,19 +1054,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <div class="policy-row"><div class="policy-key">다음 달 오픈 전</div><div class="policy-val">"오픈 알림 신청하기" · 다크 톤</div></div>
           <div class="policy-row"><div class="policy-key">이벤트 종료</div><div class="policy-val">"5월 쿠폰팩이 모두 발급되었어요" · 비활성</div></div>
           <div class="policy-row"><div class="policy-key">트래킹</div><div class="policy-val"><span class="event-tag">click_cta_main</span> (state 포함)</div></div>
-        </div>
-      </div>
-
-      <div class="policy-item open">
-        <button class="policy-q" onclick="togglePolicy(this)">
-          <div class="policy-q-left"><span class="policy-num">E4</span><span class="policy-q-text">CTA 트러스트 마이크로카피</span></div>
-          <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">카피</div><div class="policy-val">"결제정보 미수집 · 1원 결제 없음 · 한국인터넷진흥원 인증"</div></div>
-          <div class="policy-row"><div class="policy-key">목적</div><div class="policy-val">가입 직전 마지막 안심 신호 (회원가입 거부감의 핵심은 결제 두려움)</div></div>
-          <div class="policy-row"><div class="policy-key">노출</div><div class="policy-val">항상 표시 · 발급 완료 시 자동 숨김</div></div>
-          <div class="policy-row"><div class="policy-key">법무</div><div class="policy-val">한국인터넷진흥원 인증 표기는 <b>실제 인증 확인 필수</b> <span class="decide">법무 검토</span></div></div>
         </div>
       </div>
 
@@ -1135,17 +1120,17 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
 <script>
 const boats = [
   { name: '마검포 일출호', port: '충남 마검포항', rate: '4.9', price: '12만', ribbon: 'cyan', ribbonText: '실시간' },
-  { name: '방어진 청해호', port: '울산 방어진', rate: '4.8', price: '18만', ribbon: 'lime', ribbonText: '최저가' },
+  { name: '방어진 청해호', port: '울산 방어진', rate: '4.8', price: '18만', ribbon: '', ribbonText: '' },
   { name: '고성 신해호', port: '강원 고성', rate: '4.7', price: '14만', ribbon: 'cyan', ribbonText: '실시간' },
   { name: '영흥도 풍어호', port: '인천 영흥도', rate: '4.6', price: '8만', ribbon: 'yellow', ribbonText: 'new' },
-  { name: '거제 황포호', port: '경남 거제', rate: '4.9', price: '22만', ribbon: 'lime', ribbonText: '최저가' }
+  { name: '거제 황포호', port: '경남 거제', rate: '4.9', price: '22만', ribbon: '', ribbonText: '' }
 ];
 function renderBoats() {
   const wrap = document.getElementById('boatsScroll');
   wrap.innerHTML = boats.map(b => `
     <div class="boat-card" onclick="openBoat('${b.name}')">
       <div class="boat-img">
-        <span class="boat-ribbon ribbon-${b.ribbon}"><span>${b.ribbonText}</span></span>
+        ${b.ribbonText ? `<span class="boat-ribbon ribbon-${b.ribbon}"><span>${b.ribbonText}</span></span>` : ''}
         <button class="boat-heart" onclick="event.stopPropagation();toggleHeart(this)" aria-label="찜">
           <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </button>
@@ -1253,12 +1238,12 @@ function handleCTA(source = 'main') {
   if (state.eventStatus === 'ended') {
     showOverlay({
       title: '5월 쿠폰팩이 마감되었어요',
-      desc: '6월 1일에 새 쿠폰팩이 열려요.<br>알림 신청하시면 가장 먼저 알려드릴게요.',
-      btns: [{ label: '오픈 알림 신청하기', fn: () => { closeOverlay(); showToast('6월 1일 알림 신청 완료', 'success'); } }]
+      desc: '다음 캠페인 시작 시 알려드릴게요.<br>알림 신청하시면 가장 먼저 받아보실 수 있어요.',
+      btns: [{ label: '다음 캠페인 알림 신청', fn: () => { closeOverlay(); showToast('다음 캠페인 알림 신청 완료', 'success'); } }]
     });
     return;
   }
-  if (state.eventStatus === 'upcoming') { showToast('6월 1일 오픈 알림을 받기로 했어요', 'success'); return; }
+  if (state.eventStatus === 'upcoming') { showToast('다음 캠페인 알림을 받기로 했어요', 'success'); return; }
   if (state.flags.expiring) { showToast('받은 쿠폰으로 예약하러 갑니다', 'info'); return; }
   if (state.flags.afterUse) { showToast('남은 쿠폰으로 예약 둘러보기', 'info'); return; }
   if (!state.isLoggedIn) { openSheet({ kakaoUnavailable: state.flags.kakaoUnavailable }); return; }
@@ -1313,7 +1298,7 @@ function updateCTA() {
     return;
   }
   if (state.eventStatus === 'upcoming') {
-    btn.classList.add('dark'); btn.innerHTML = '6월 오픈 알림 신청하기';
+    btn.classList.add('dark'); btn.innerHTML = '다음 캠페인 알림 신청하기';
     valueRow.style.visibility = 'hidden';
     return;
   }
@@ -1341,10 +1326,10 @@ function updateCTA() {
 
 function updateHeroCopy(opts = {}) {
   if (opts.safeCopy) {
-    document.getElementById('heroHook').textContent = '회원 가입 혜택 · 2026년 5월';
+    document.getElementById('heroHook').textContent = '5월 쿠폰팩 · 어바웃피싱 회원 혜택';
     document.getElementById('heroHeadline').innerHTML = '선박 예약 쿠폰<br><span class="num">13장</span>을<br>한 번에 받아가세요<span class="dot">.</span>';
   } else {
-    document.getElementById('heroHook').textContent = '2026년 5월 · 회원이면 누구나';
+    document.getElementById('heroHook').textContent = '5월 쿠폰팩 · 회원이면 누구나 1회';
     document.getElementById('heroHeadline').innerHTML = '선박 예약 쿠폰<br><span class="num">13장</span>을<br>한 번에 받아가세요<span class="dot">.</span>';
   }
 }
