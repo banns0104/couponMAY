@@ -135,6 +135,26 @@ body:not(.annotations-on) .anno-marker { display: none; }
 }
 .anno-toggle-btn svg { width: 12px; height: 12px; }
 
+
+/* 정책 디스크립션 내 "해당부분 보기" 버튼 */
+.policy-locate {
+  display: inline-flex; align-items: center; gap: 5px;
+  margin-top: 10px;
+  padding: 6px 11px;
+  border: 1px solid var(--af-blue);
+  background: var(--af-blue-bg);
+  color: var(--af-blue);
+  font-family: inherit;
+  font-size: 11px; font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: -0.2px;
+  transition: background 0.12s;
+}
+.policy-locate:hover { background: var(--af-blue); color: #FFF; }
+.policy-locate:active { transform: translateY(1px); }
+.policy-locate svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 2; fill: none; }
+
 /* 정책 항목 강조 (모바일 클릭 시 우측 패널에서) */
 .policy-item.targeted {
   background: var(--af-blue-bg);
@@ -862,7 +882,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">노출 조건</div><div class="policy-val">모바일 웹 · 앱 미설치 · 최초 진입 (쿠키 기반)</div></div>
+          <div class="policy-row"><div class="policy-key">노출 조건</div><div class="policy-val">모바일 웹 · 앱 미설치 · 최초 진입 (쿠키 기반)
+          <button class="policy-locate" onclick="highlightPolicyTarget('A1')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">닫기</div><div class="policy-val">우측 X 버튼 · 닫기 후 <b>7일 재노출 금지</b> 쿠키</div></div>
           <div class="policy-row"><div class="policy-key">"앱 받기" 동작</div><div class="policy-val">OS detect · iOS → App Store · Android → Play Store · 둘 다 UTM 보존</div></div>
           <div class="policy-row"><div class="policy-key">트래킹</div><div class="policy-val"><span class="event-tag">app_banner_view</span> <span class="event-tag">app_banner_dismiss</span> <span class="event-tag">app_banner_install_click</span></div></div>
@@ -877,7 +898,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">노출 조건</div><div class="policy-val">발급 완료 + <b>만료 D-3 ~ D-1</b> + 미사용 쿠폰 1장 이상 보유</div></div>
+          <div class="policy-row"><div class="policy-key">노출 조건</div><div class="policy-val">발급 완료 + <b>만료 D-3 ~ D-1</b> + 미사용 쿠폰 1장 이상 보유
+          <button class="policy-locate" onclick="highlightPolicyTarget('A2')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">표시 카피</div><div class="policy-val">가장 큰 미사용 쿠폰 가치 동적 노출 (예: "최대 2만원 할인")</div></div>
           <div class="policy-row"><div class="policy-key">자동 갱신</div><div class="policy-val">매일 자정 KST 만료일 재계산</div></div>
           <div class="policy-row"><div class="policy-key">연동 푸시</div><div class="policy-val">동시에 D-3, D-1 푸시 발송 (FlareLane)</div></div>
@@ -895,7 +917,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">Eyebrow</div><div class="policy-val">"예약 쿠폰팩 · 회원이면 누구나 1회" · 카피 변경 시 백엔드 fetch · <b>본 이벤트 미수령 회원이 대상</b></div></div>
+          <div class="policy-row"><div class="policy-key">Eyebrow</div><div class="policy-val">"예약 쿠폰팩 · 회원이면 누구나 1회" · 카피 변경 시 백엔드 fetch · <b>본 이벤트 미수령 회원이 대상</b>
+          <button class="policy-locate" onclick="highlightPolicyTarget('B1')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">타이틀</div><div class="policy-val">"선박 예약 쿠폰 13장을 한 번에 받아가세요." · dot signature 포함</div></div>
           <div class="policy-row"><div class="policy-key">변경 권한</div><div class="policy-val">쿠폰 구성 변경 시 카피·약관 동시 갱신 (지속 이벤트 운영)</div></div>
         </div>
@@ -907,7 +930,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">쿠폰 가치</div><div class="policy-val">"최대 6만원+" · <b>쿠폰 합계 변경 시 동적 fetch</b></div></div>
+          <div class="policy-row"><div class="policy-key">쿠폰 가치</div><div class="policy-val">"최대 6만원+" · <b>쿠폰 합계 변경 시 동적 fetch</b>
+          <button class="policy-locate" onclick="highlightPolicyTarget('B2')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">받는 비용</div><div class="policy-val">"완전 무료" · 회원 가입 시 1회 발급 조건 명시</div></div>
           <div class="policy-row"><div class="policy-key">발급 시간</div><div class="policy-val">"3초" · 카카오 외 로그인(네이버/Apple/이메일) 선택 시 다소 길어질 수 있음</div></div>
           <div class="policy-row"><div class="policy-key">광고심의</div><div class="policy-val">"최대" 표현 필수, "+" 모호화 표현 OK, "무료" 표기 시 회원 가입 조건 명시</div></div>
@@ -920,7 +944,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">수치 출처</div><div class="policy-val">최근 30일 누적 발급 수 · 매일 자정 KST 갱신</div></div>
+          <div class="policy-row"><div class="policy-key">수치 출처</div><div class="policy-val">최근 30일 누적 발급 수 · 매일 자정 KST 갱신
+          <button class="policy-locate" onclick="highlightPolicyTarget('B3')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">런칭 초기</div><div class="policy-val">런칭 후 <b>7일 미만</b>: 사회적 증명 영역 자동 숨김 (가짜 인상 방지)</div></div>
           <div class="policy-row"><div class="policy-key">광고심의</div><div class="policy-val">실제 발급 수치 미만 표시 금지 · 운영팀 입력값 검수 필수</div></div>
           <div class="policy-row"><div class="policy-key">아바타</div><div class="policy-val">랜덤 한국 성씨 3개 (김/이/박 등) · 익명 처리</div></div>
@@ -937,7 +962,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">노출 조건</div><div class="policy-val">페이지 진입 시 발급 이력 조회 · 발급 완료 사용자만</div></div>
+          <div class="policy-row"><div class="policy-key">노출 조건</div><div class="policy-val">페이지 진입 시 발급 이력 조회 · 발급 완료 사용자만
+          <button class="policy-locate" onclick="highlightPolicyTarget('C1')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">B2 (미사용)</div><div class="policy-val">"예약 쿠폰팩 13장, 발급 완료" + "예약 결제 시 자동으로 추천돼요"</div></div>
           <div class="policy-row"><div class="policy-key">B3 (만료 D-3)</div><div class="policy-val">"쿠폰 사용 가능 기간 D-3" + 가장 큰 쿠폰 미사용 안내 (빨강 톤)</div></div>
           <div class="policy-row"><div class="policy-key">B4 (사용 후)</div><div class="policy-val">"예약 1회 완료! 12장 남음" + 추가 사용 유도</div></div>
@@ -955,7 +981,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">큐레이션</div><div class="policy-val">기본: 전월 예약 건수 Top 5 · 발급 후엔 <b>"받은 쿠폰 최대 절감액"</b> 기준 재정렬</div></div>
+          <div class="policy-row"><div class="policy-key">큐레이션</div><div class="policy-val">기본: 전월 예약 건수 Top 5 · 발급 후엔 <b>"받은 쿠폰 최대 절감액"</b> 기준 재정렬
+          <button class="policy-locate" onclick="highlightPolicyTarget('D1')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">카드 클릭</div><div class="policy-val">선박 상세 페이지 이동 · UTM 보존 (전환 attribution)</div></div>
           <div class="policy-row"><div class="policy-key">"전체 선박"</div><div class="policy-val">예약 카테고리 메인으로 이동</div></div>
           <div class="policy-row"><div class="policy-key">하트(찜)</div><div class="policy-val">비로그인 클릭 시 카카오 시트 (메인 CTA와 동일 처리)</div></div>
@@ -970,7 +997,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">운영 상태</div><div class="policy-val">지속 운영 (운영 변경 시 사전 고지)</div></div>
+          <div class="policy-row"><div class="policy-key">운영 상태</div><div class="policy-val">지속 운영 (운영 변경 시 사전 고지)
+          <button class="policy-locate" onclick="highlightPolicyTarget('D2')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">사용 기간</div><div class="policy-val">발급일부터 30일 (정책 fixed)</div></div>
           <div class="policy-row"><div class="policy-key">사용처</div><div class="policy-val">선박 예약 결제만 (정책 fixed)</div></div>
           <div class="policy-row"><div class="policy-key">정책 변경</div><div class="policy-val">변경 시 약관 동시 갱신 필수 · 사전 7일 고지</div></div>
@@ -983,7 +1011,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">구성</div><div class="policy-val">정액 5종 (3천~2만원) + 정률 4종 × 2장 = <b>총 13장</b></div></div>
+          <div class="policy-row"><div class="policy-key">구성</div><div class="policy-val">정액 5종 (3천~2만원) + 정률 4종 × 2장 = <b>총 13장</b>
+          <button class="policy-locate" onclick="highlightPolicyTarget('D3')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">카드 상호작용</div><div class="policy-val"><b>비활성</b> · 정보 카드로만 사용 (피드백 #5 반영)</div></div>
           <div class="policy-row"><div class="policy-key">그룹 라벨</div><div class="policy-val">"예약 금액별 정액 할인 · 5장" / "퍼센트 할인 (1인당 2장씩) · 8장"</div></div>
           <div class="policy-row"><div class="policy-key">월별 변경</div><div class="policy-val">A/B 테스트 단위로 구성 변경 가능 · 객단가 데이터 기반 재조정</div></div>
@@ -997,7 +1026,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">목적</div><div class="policy-val">결제 전환 인지 부담 해소 · 발급 → 사용 funnel 단순화</div></div>
+          <div class="policy-row"><div class="policy-key">목적</div><div class="policy-val">결제 전환 인지 부담 해소 · 발급 → 사용 funnel 단순화
+          <button class="policy-locate" onclick="highlightPolicyTarget('D4')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">정책</div><div class="policy-val">사용 흐름 변경 시 동기 갱신 (자동 추천 룰 변경 등)</div></div>
           <div class="policy-row"><div class="policy-key">변형</div><div class="policy-val">A/B 테스트 대상: "3단계 노출 vs 미노출" · 발급률·전환률 비교</div></div>
         </div>
@@ -1009,7 +1039,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">초기 상태</div><div class="policy-val">첫 문항만 펼침 · 나머지 접힘</div></div>
+          <div class="policy-row"><div class="policy-key">초기 상태</div><div class="policy-val">첫 문항만 펼침 · 나머지 접힘
+          <button class="policy-locate" onclick="highlightPolicyTarget('D5')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">구성</div><div class="policy-val">정말 무료? · 어디 사용? · 다시 받을 수 있나? · 왜 가입? · 한 번에 여러 장?</div></div>
           <div class="policy-row"><div class="policy-key">업데이트</div><div class="policy-val">분기마다 채널톡 인입 Top 5 질문 분석 → FAQ 갱신</div></div>
           <div class="policy-row"><div class="policy-key">AEO Schema</div><div class="policy-val">FAQPage Schema.org JSON-LD 자동 생성 (AI 검색 인용)</div></div>
@@ -1023,7 +1054,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">핵심 강조 1</div><div class="policy-val"><b>계정당 1회만 발급</b> · 재발행/중복 발급 불가, 탈퇴 후 재가입 시에도 재지급 불가 (CI 기반 차단)</div></div>
+          <div class="policy-row"><div class="policy-key">핵심 강조 1</div><div class="policy-val"><b>계정당 1회만 발급</b> · 재발행/중복 발급 불가, 탈퇴 후 재가입 시에도 재지급 불가 (CI 기반 차단)
+          <button class="policy-locate" onclick="highlightPolicyTarget('D6')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">핵심 강조 2</div><div class="policy-val"><b>정액·정률 쿠폰은 고객 사유 취소 시 소멸</b> · 복구 불가 (업체 사유 취소는 복구)</div></div>
           <div class="policy-row"><div class="policy-key">필수 항목</div><div class="policy-val">8개 (계정당 1회 · 취소 소멸 · 사용처 · 사용 기간 · 재구매/단체 안내 · 1결제 1쿠폰 · 일부 제외 · 변경/종료 권한)</div></div>
           <div class="policy-row"><div class="policy-key">법무 정합성</div><div class="policy-val">이용약관과 1:1 매칭 필수 · 변경 시 약관 동시 개정 <span class="decide">약관 개정 필수</span></div></div>
@@ -1037,7 +1069,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">발급 조건</div><div class="policy-val">예약 이용 완료 시 자동 발급 · 누적 이용 횟수 기반 등급 산정</div></div>
+          <div class="policy-row"><div class="policy-key">발급 조건</div><div class="policy-val">예약 이용 완료 시 자동 발급 · 누적 이용 횟수 기반 등급 산정
+          <button class="policy-locate" onclick="highlightPolicyTarget('D7')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">할인 등급</div><div class="policy-val">1회 <b>5%</b> · 2-3회 <b>7%</b> · 4-6회 <b>10%</b> · 7회+ <b>15%</b></div></div>
           <div class="policy-row"><div class="policy-key">사용 기간</div><div class="policy-val">발급일로부터 31일</div></div>
           <div class="policy-row"><div class="policy-key">취소 시</div><div class="policy-val">고객 사유 취소 시 발급된 재구매 쿠폰 소멸 (이용 횟수에서도 차감)</div></div>
@@ -1054,7 +1087,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">발급 대상</div><div class="policy-val"><b>회원 누구나</b> · 별도 신청 없이 자동 발급 (정액·정률 쿠폰과 동일 구조)</div></div>
+          <div class="policy-row"><div class="policy-key">발급 대상</div><div class="policy-val"><b>회원 누구나</b> · 별도 신청 없이 자동 발급 (정액·정률 쿠폰과 동일 구조)
+          <button class="policy-locate" onclick="highlightPolicyTarget('D8')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">사용 조건</div><div class="policy-val"><b>4인 이상 예약 결제 시에만 사용 가능</b> · 결제 화면에서 인원 검증 후 자동 적용</div></div>
           <div class="policy-row"><div class="policy-key">할인율</div><div class="policy-val"><b>10%</b> · 금액 상한 제한 없음</div></div>
           <div class="policy-row"><div class="policy-key">사용 기간</div><div class="policy-val">발급일로부터 31일</div></div>
@@ -1075,7 +1109,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">위치</div><div class="policy-val">우측 하단 플로팅 (CTA 바 위)</div></div>
+          <div class="policy-row"><div class="policy-key">위치</div><div class="policy-val">우측 하단 플로팅 (CTA 바 위)
+          <button class="policy-locate" onclick="highlightPolicyTarget('E1')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">클릭</div><div class="policy-val">채널톡 SDK ChannelIO('showMessenger') 호출</div></div>
           <div class="policy-row"><div class="policy-key">운영 시간 분기</div><div class="policy-val">평일 09:00~18:00 응대 / 외 시간 자동 응답 (운영 정책 확정 필요)</div></div>
           <div class="policy-row"><div class="policy-key">트래킹</div><div class="policy-val"><span class="event-tag">channel_open</span> (질문 카테고리 통계용)</div></div>
@@ -1088,7 +1123,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">기본 (비로그인)</div><div class="policy-val">좌 "카카오로 3초 가입하고 받기" · 우 "최대 6만원+"</div></div>
+          <div class="policy-row"><div class="policy-key">기본 (비로그인)</div><div class="policy-val">좌 "카카오로 3초 가입하고 받기" · 우 "최대 6만원+"
+          <button class="policy-locate" onclick="highlightPolicyTarget('E2')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">발급 완료</div><div class="policy-val">좌 "13장 발급 완료" · 우 "예약 결제 시 자동 적용"</div></div>
           <div class="policy-row"><div class="policy-key">만료 임박</div><div class="policy-val">전체 빨강 톤 · 좌 "D-3 만료 임박" · 우 "최대 2만원"</div></div>
           <div class="policy-row"><div class="policy-key">이벤트 종료</div><div class="policy-val">숨김</div></div>
@@ -1101,7 +1137,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">비로그인</div><div class="policy-val">"쿠폰 13장 모두 받기" · 탭 시 <b>즉시 카카오 시트</b> (토스트 없음)</div></div>
+          <div class="policy-row"><div class="policy-key">비로그인</div><div class="policy-val">"쿠폰 13장 모두 받기" · 탭 시 <b>즉시 카카오 시트</b> (토스트 없음)
+          <button class="policy-locate" onclick="highlightPolicyTarget('E3')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">로그인·미발급</div><div class="policy-val">"쿠폰 13장 모두 받기" · 탭 시 즉시 발급 트랜잭션</div></div>
           <div class="policy-row"><div class="policy-key">발급 진행 중</div><div class="policy-val">스피너 + "발급 중..." · 중복 탭 방어 (1.5s debounce)</div></div>
           <div class="policy-row"><div class="policy-key">발급 완료</div><div class="policy-val">"받은 쿠폰으로 예약하기" · 예약 카테고리로 이동</div></div>
@@ -1118,7 +1155,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">노출 조건</div><div class="policy-val">발급 완료 사용자만 표시</div></div>
+          <div class="policy-row"><div class="policy-key">노출 조건</div><div class="policy-val">발급 완료 사용자만 표시
+          <button class="policy-locate" onclick="highlightPolicyTarget('E5')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">동작</div><div class="policy-val">쿠폰함 페이지(/coupon) 이동</div></div>
           <div class="policy-row"><div class="policy-key">트래킹</div><div class="policy-val"><span class="event-tag">click_coupon_box</span></div></div>
         </div>
@@ -1134,7 +1172,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">위치</div><div class="policy-val">CTA 바 위 중앙</div></div>
+          <div class="policy-row"><div class="policy-key">위치</div><div class="policy-val">CTA 바 위 중앙
+          <button class="policy-locate" onclick="highlightPolicyTarget('F1')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">지속</div><div class="policy-val">기본 <b>2.5s</b> / 성공(발급 완료) <b>3s</b> / 에러 3s</div></div>
           <div class="policy-row"><div class="policy-key">종류</div><div class="policy-val">success (초록) / info (파랑) / error (빨강)</div></div>
           <div class="policy-row"><div class="policy-key">정책</div><div class="policy-val">동시 중첩 금지 · 마지막 메시지로 덮어쓰기</div></div>
@@ -1148,7 +1187,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">트리거</div><div class="policy-val"><b>명시적 CTA 탭만</b> · 페이지 진입 시 자동 노출 금지</div></div>
+          <div class="policy-row"><div class="policy-key">트리거</div><div class="policy-val"><b>명시적 CTA 탭만</b> · 페이지 진입 시 자동 노출 금지
+          <button class="policy-locate" onclick="highlightPolicyTarget('F2')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">기본 동작</div><div class="policy-val">카카오 SDK 호출 → 로그인 → 발급 트랜잭션</div></div>
           <div class="policy-row"><div class="policy-key">다른 방법 로그인</div><div class="policy-val">시트에 <b>"다른 방법으로 로그인"</b> 버튼 상시 노출 · 클릭 시 같은 시트 내에서 네이버 / Apple / 이메일 옵션으로 전환</div></div>
           <div class="policy-row"><div class="policy-key">인앱브라우저</div><div class="policy-val">카카오 SDK 차단 환경 (인스타그램·페이스북 인앱) → 사용자가 "다른 방법으로 로그인" 명시 선택해 우회 가능</div></div>
@@ -1165,7 +1205,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
           <svg class="policy-toggle" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="policy-a">
-          <div class="policy-row"><div class="policy-key">사용 시나리오</div><div class="policy-val">이벤트 운영 중단 (D3) · 탈퇴 후 재가입 차단 (D2)</div></div>
+          <div class="policy-row"><div class="policy-key">사용 시나리오</div><div class="policy-val">이벤트 운영 중단 (D3) · 탈퇴 후 재가입 차단 (D2)
+          <button class="policy-locate" onclick="highlightPolicyTarget('F3')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>해당부분 보기</button></div></div>
           <div class="policy-row"><div class="policy-key">닫기 방식</div><div class="policy-val"><b>명시적 CTA만</b> · backdrop 탭 비활성 (모달의 본질 보존)</div></div>
           <div class="policy-row"><div class="policy-key">정책</div><div class="policy-val">페이지 핵심 경로를 완전히 차단할 때만 사용 · 남용 금지</div></div>
           <div class="policy-row"><div class="policy-key">D2: 재가입 차단</div><div class="policy-val">"이미 받으셨던 회원이에요" · CI 기반 차단 결과 안내</div></div>
