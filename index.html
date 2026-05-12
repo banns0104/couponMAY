@@ -344,10 +344,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
 .cta-trust .sep { color: var(--fg-4); }
 
 /* ============ CONTROL PANEL ============ */
-.scenario-panel { width: 340px; flex-shrink: 0; position: sticky; top: 22px; max-height: calc(100vh - 44px); overflow-y: auto; }
-.scenario-panel::-webkit-scrollbar { width: 4px; }
-.scenario-panel::-webkit-scrollbar-thumb { background: #C8CCD2; border-radius: 2px; }
-.policy-panel { flex: 1; max-width: 480px; min-width: 380px; }
+.scenario-panel { width: 340px; flex-shrink: 0; position: relative; z-index: 2; }
+.policy-panel { flex: 1; max-width: 480px; min-width: 380px; position: relative; z-index: 2; }
+.mobile-wrap-z { z-index: 1; }
 .control-card { background: #FFF; border-radius: 16px; padding: 22px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
 .control-card h1 { font-size: 17px; font-weight: 800; color: var(--fg-1); margin-bottom: 3px; letter-spacing: -0.5px; }
 .control-card .meta { font-size: 12px; color: var(--fg-3); margin-bottom: 16px; }
@@ -648,7 +647,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--af-blue); outli
               <div class="benefit-info-row"><span class="k">조건</span><span class="v">4인 이상 예약 시 신청</span></div>
               <div class="benefit-info-row"><span class="k">유효</span><span class="v">발급일로부터 31일</span></div>
             </div>
-            <button class="benefit-cta" onclick="handleGroupCoupon()">단체예약 쿠폰 신청하기<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
           </div>
         </div>
       </div>
@@ -1164,8 +1162,6 @@ function renderBoats() {
     </div>
   `).join('');
 }
-renderBoats();
-
 let state = { scenario: 'A1', isLoggedIn: false, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: {} };
 
 function trackEvent(n, p = {}) { window.dataLayer.push({ event: n, ...p }); console.log('[GTM]', n, p); }
@@ -1336,6 +1332,89 @@ function updateCTA() {
   if (state.isIssued) {
     btn.classList.add('primary'); btn.innerHTML = '받은 쿠폰으로 예약하기';
     subLink.classList.add('show');
-    valueRow.innerHTML = '<div class="cta-value-left"><svg viewBox="0 0 24 24" fill="none" stroke="#0041FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>13장 발급 완료</strong> · 결제 시 자동 추천</span></div>
-</div>
+    valueRow.innerHTML = '<div class="cta-value-left"><svg viewBox="0 0 24 24" fill="none" stroke="#0041FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>13장 발급 완료</strong> · 결제 시 자동 추천</span></div>';
+    return;
+  }
+  btn.classList.add('primary'); btn.innerHTML = '쿠폰 13장 모두 받기';
+  valueRow.innerHTML = '<div class="cta-value-left"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" fill="#FEE500"/></svg><span><strong>카카오로 3초</strong> 가입하고 받기</span></div><span class="cta-value-right">최대 6만원+</span>';
+}
+
+function updateHeroCopy(opts = {}) {
+  if (opts.safeCopy) {
+    document.getElementById('heroHook').textContent = '회원 가입 혜택 · 2026년 5월';
+    document.getElementById('heroHeadline').innerHTML = '선박 예약 쿠폰<br><span class="num">13장</span>을<br>한 번에 받아가세요<span class="dot">.</span>';
+  } else {
+    document.getElementById('heroHook').textContent = '2026년 5월 · 회원이면 누구나';
+    document.getElementById('heroHeadline').innerHTML = '선박 예약 쿠폰<br><span class="num">13장</span>을<br>한 번에 받아가세요<span class="dot">.</span>';
+  }
+}
+
+const scenarioConfig = {
+  A1: { state: { isLoggedIn: false, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: {} } },
+  A2: { state: { isLoggedIn: false, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: { kakaoUnavailable: true } } },
+  A3: { state: { isLoggedIn: true, isIssued: false, isLoading: true, eventStatus: 'ongoing', flags: {} } },
+  A4: { state: { isLoggedIn: true, isIssued: true, isLoading: false, eventStatus: 'ongoing', flags: {} }, after: () => { showToast('쿠폰 13장 발급 완료! 예약에 바로 쓰실 수 있어요', 'success', 3000); document.getElementById('completedBanner').classList.add('show'); } },
+  B1: { state: { isLoggedIn: true, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: {} } },
+  B2: { state: { isLoggedIn: true, isIssued: true, isLoading: false, eventStatus: 'ongoing', flags: {} }, after: () => document.getElementById('completedBanner').classList.add('show') },
+  B3: { state: { isLoggedIn: true, isIssued: true, isLoading: false, eventStatus: 'ongoing', flags: { expiring: true } }, after: () => { document.getElementById('expireBanner').classList.add('show'); document.getElementById('completedBanner').classList.add('show'); document.getElementById('completedT1').textContent = '쿠폰 사용 가능 기간 D-3'; document.getElementById('completedT2').textContent = '아직 13장 모두 미사용 상태에요'; } },
+  B4: { state: { isLoggedIn: true, isIssued: true, isLoading: false, eventStatus: 'ongoing', flags: { afterUse: true } }, after: () => { document.getElementById('completedBanner').classList.add('show'); document.getElementById('completedT1').textContent = '예약 1회 완료! 12장이 남아있어요'; document.getElementById('completedT2').textContent = '추가 예약 시 자동으로 적용돼요'; } },
+  C1: { state: { isLoggedIn: true, isIssued: false, isLoading: false, eventStatus: 'upcoming', flags: {} }, after: () => document.getElementById('statusUpcoming').classList.add('show') },
+  C2: { state: { isLoggedIn: false, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: {} }, after: () => document.getElementById('urgencyBar').classList.add('show') },
+  C3: { state: { isLoggedIn: true, isIssued: false, isLoading: false, eventStatus: 'ended', flags: {} } },
+  D1: { state: { isLoggedIn: true, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: {} } },
+  D2: { state: { isLoggedIn: false, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: { rejoinBlocked: true } } },
+  D3: { state: { isLoggedIn: false, isIssued: false, isLoading: false, eventStatus: 'ongoing', flags: { safeCopy: true } }, after: () => updateHeroCopy({ safeCopy: true }) }
+};
+
+function setScenario(key, btnEl) {
+  console.log('[setScenario]', key);
+  const cfg = scenarioConfig[key];
+  if (!cfg) { console.error('No config:', key); return; }
+  state.scenario = key;
+  state.isLoggedIn = cfg.state.isLoggedIn;
+  state.isIssued = cfg.state.isIssued;
+  state.isLoading = cfg.state.isLoading;
+  state.eventStatus = cfg.state.eventStatus;
+  state.flags = cfg.state.flags || {};
+  document.querySelectorAll('.scen-btn').forEach(b => b.classList.remove('active'));
+  if (btnEl) btnEl.classList.add('active');
+  resetUI();
+  updateHeroCopy({ safeCopy: !!state.flags.safeCopy });
+  updateCTA();
+  if (cfg.after) setTimeout(cfg.after, 100);
+}
+
+function resetUI() {
+  document.getElementById('toast').classList.remove('show');
+  document.getElementById('sheetBackdrop').classList.remove('show');
+  document.getElementById('sheet').classList.remove('show');
+  document.getElementById('fullOverlay').classList.remove('show');
+  document.getElementById('statusUpcoming').classList.remove('show');
+  document.getElementById('completedBanner').classList.remove('show');
+  document.getElementById('expireBanner').classList.remove('show');
+  document.getElementById('urgencyBar').classList.remove('show');
+  document.getElementById('completedT1').textContent = '5월 쿠폰팩 13장, 발급 완료';
+  document.getElementById('completedT2').textContent = '예약 결제 시 자동으로 추천돼요';
+  document.getElementById('screen').scrollTop = 0;
+}
+
+
+
+function initPage() {
+  console.log('[initPage] starting');
+  renderBoats();
+  updateCTA();
+  const firstBtn = document.querySelector('.scen-btn.active');
+  if (firstBtn) setScenario('A1', firstBtn);
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPage);
+} else {
+  initPage();
+}
+
+function togglePolicy(el) { el.closest('.policy-item').classList.toggle('open'); }
+function handleGroupCoupon() { trackEvent('group_coupon_request_click'); showToast('단체예약 쿠폰 신청 페이지로 이동합니다', 'info'); }
+</script>
+
 </body></html>
